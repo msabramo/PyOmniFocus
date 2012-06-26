@@ -16,7 +16,7 @@ from docopt import docopt
 from omnifocus import Database
 
 
-if __name__ == '__main__':
+def main():
     arguments = docopt(__doc__)
     # print(arguments)
 
@@ -37,3 +37,7 @@ if __name__ == '__main__':
         context = Database.get_context(arguments['<context_name>'])
         for task in context.tasks:
             print(task.name.encode('utf-8'))
+
+
+if __name__ == '__main__':
+    main()

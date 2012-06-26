@@ -27,7 +27,11 @@ setup(name='PyOmniFocus',
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       zip_safe=False,
       platforms=["any"],
-      install_requires=['sqlalchemy'],
+      install_requires=['docopt', 'sqlalchemy'],
       test_suite = 'nose.collector',
+      entry_points="""
+      [console_scripts]
+      omnifocus-cli = omnifocuscli:main
+      """,
       **extra
 )
