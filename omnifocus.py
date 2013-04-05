@@ -116,9 +116,19 @@ class Task(Base):
     containingProjectContainsSingletons = Column(Integer)
     containingProjectInfo = Column(Text)
     containsNextTask = Column(Integer)
+    context = relationship('Context', backref=backref('Task'))
+    creationOrdinal = Column(Integer)
+
+    # @todo: These come as integer timestamps and need to be converted to datetimes
+    dateAdded = Column(Integer)
+    dateCompleted = Column(Integer)
+    dateDue = Column(Integer)
+    dateModified = Column(Integer)
+    dateToStart = Column(Integer)
+
+    # Other important fields I did out of order because I wanted 'em
     name = Column(Text)
     context_id = Column('context', Text, ForeignKey('Context.persistentIdentifier'))
-    context = relationship('Context', backref=backref('Task'))
     projectInfo = Column(Text)
     parent_id = Column('parent', Text, ForeignKey('Task.persistentIdentifier'))
 
