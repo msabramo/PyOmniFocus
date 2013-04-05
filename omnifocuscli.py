@@ -31,7 +31,8 @@ def main():
     if arguments['project'] and arguments['list-tasks']:
         project = Database.get_project(arguments['<project_name>'])
         for task in project.children:
-            print('%-20s %-60s' % (task.context.name.encode('utf-8'), task.name.encode('utf-8')))
+            context_name = task.context.name.encode('utf-8') if task.context else None
+            print('%-20s %-60s' % (context_name, task.name.encode('utf-8')))
 
     if arguments['context'] and arguments['list-tasks']:
         context = Database.get_context(arguments['<context_name>'])
